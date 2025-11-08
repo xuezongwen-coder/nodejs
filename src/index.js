@@ -8,12 +8,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Customer = require("./models/customer");
+const cors = require('cors');
 // const dotenv = require('dotenv')
-
 mongoose.set("strictQuery", false);
-
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
