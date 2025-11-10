@@ -1,11 +1,24 @@
-const mongoose = require("mongoose");
-
-const customerSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  industry: String,
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
+//const mongoose = require("mongoose");
+const customerSchema = new mongoose_1.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    industry: String,
+    orders: [
+        {
+            description: String,
+            amountInCents: Number
+        }
+    ]
 });
-
-module.exports = mongoose.model("customer", customerSchema);
+const Customer = (0, mongoose_1.model)("customer", customerSchema);
+const c = new Customer({
+    name: 'test',
+    industry: 'test'
+});
+console.log(c.$clone());
+exports.default = Customer;
